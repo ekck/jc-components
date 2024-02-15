@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,7 +47,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
 //                    contentAlignment = Alignment.CenterStart
                 ) {
-                    LearnButton()
+                    LearnImage()
                     
                 }
             }
@@ -165,5 +167,19 @@ fun LearnButton(){
 
 @Composable
 fun LearnImage(){
+    val context = LocalContext.current.applicationContext
+
+    Column (verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        Image(painter = painterResource(id = R.drawable.work), contentDescription = "work in progress" )
+
+        Button(onClick = { Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()},
+
+            shape = RoundedCornerShape(size = 16.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Cyan)
+        ) {
+            Text(text = "Login")
+
+        }
+
+    }
 
 }
