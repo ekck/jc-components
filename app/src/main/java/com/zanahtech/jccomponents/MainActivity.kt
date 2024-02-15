@@ -1,6 +1,7 @@
 package com.zanahtech.jccomponents
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -13,6 +14,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -20,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,7 +45,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
 //                    contentAlignment = Alignment.CenterStart
                 ) {
-                    LearnAlignmentArrangement()
+                    LearnButton()
                     
                 }
             }
@@ -116,29 +121,49 @@ class MainActivity : ComponentActivity() {
 //Alignment = Cross Axis (Row = Vertical, Column = Horizontal)
 //Arrangement = Main Axis (Row = Horizontal, Column = Vertical)
 
+//@Composable
+//fun LearnAlignmentArrangement(){
+//
+//    //RowAlignment: Top, CenterVertically, Bottom
+//    //RowArrangement: Start, Center, End, SpaceBetween, SpaceAround, SpaceEvenly,
+//            //Absolute.Left, Absolute.Right, Absolute.Center
+//            //Absolute.SpaceBetween, Absolute.SpaceAround, Absolute.SpaceEvenly
+////    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
+////        Text(text = "Row Alignment Arrangement")
+////    }
+//
+//   Box(contentAlignment = Alignment.BottomCenter){
+//       Text(text = "text", modifier = Modifier.align(Alignment.Center))
+//       Text(text = "text 2", modifier = Modifier.align(Alignment.TopCenter))
+//       Text(text = "text3", modifier = Modifier.align(Alignment.TopEnd))
+//       Text(text = "text4", modifier = Modifier.align(Alignment.TopStart))
+//       Text(text = "text5", modifier = Modifier.align(Alignment.BottomEnd))
+//       Text(text = "text6", modifier = Modifier.align(Alignment.CenterStart))
+//       Text(text = "text8", modifier = Modifier.align(Alignment.CenterEnd))
+//       Text(text = "text9", modifier = Modifier.align(Alignment.BottomStart))
+//
+//   }
+//}
+
+
+
 @Composable
-fun LearnAlignmentArrangement(){
+fun LearnButton(){
 
-    //RowAlignment: Top, CenterVertically, Bottom
-    //RowArrangement: Start, Center, End, SpaceBetween, SpaceAround, SpaceEvenly,
-            //Absolute.Left, Absolute.Right, Absolute.Center
-            //Absolute.SpaceBetween, Absolute.SpaceAround, Absolute.SpaceEvenly
-//    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
-//        Text(text = "Row Alignment Arrangement")
-//    }
+    val context = LocalContext.current.applicationContext
 
-   Box(contentAlignment = Alignment.BottomCenter){
-       Text(text = "text", modifier = Modifier.align(Alignment.Center))
-       Text(text = "text 2", modifier = Modifier.align(Alignment.TopCenter))
-       Text(text = "text3", modifier = Modifier.align(Alignment.TopEnd))
-       Text(text = "text4", modifier = Modifier.align(Alignment.TopStart))
-       Text(text = "text5", modifier = Modifier.align(Alignment.BottomEnd))
-       Text(text = "text6", modifier = Modifier.align(Alignment.CenterStart))
-       Text(text = "text8", modifier = Modifier.align(Alignment.CenterEnd))
-       Text(text = "text9", modifier = Modifier.align(Alignment.CenterStart))
+    Column (verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        Button(onClick = { Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()},
 
-   }   
+            shape = RoundedCornerShape(size = 16.dp), colors = ButtonDefaults.buttonColors(containerColor = Color.Cyan)
+        ) {
+            Text(text = "Login")
+
+        }
+    }
 }
 
+@Composable
+fun LearnImage(){
 
-
+}
